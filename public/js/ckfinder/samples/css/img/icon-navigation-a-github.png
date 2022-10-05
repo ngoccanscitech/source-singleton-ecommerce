@@ -1,0 +1,3 @@
+modify=20220601090459;perm=flcdmpe;type=pdir;unique=FD02U11C06B;UNIX.group=1002;UNIX.groupname=ftp;UNIX.mode=0755;UNIX.owner=1001;UNIX.ownername=ftp; ..
+modify=20220106121322;perm=adfrw;size=3859;type=file;unique=FD02U11AD9F;UNIX.group=1002;UNIX.groupname=ftp;UNIX.mode=0644;UNIX.owner=1001;UNIX.ownername=ftp; Partner 2__150x150.jpg
+modify=20220601090459;perm=flcdmpe;type=cdir;unique=FD02U11C073;UNIX.group=1002;UNIX.groupname=ftp;UNIX.mode=0755;UNIX.owner=1001;UNIX.ownername=ftp; .

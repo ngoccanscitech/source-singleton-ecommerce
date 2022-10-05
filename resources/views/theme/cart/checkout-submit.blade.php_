@@ -1,0 +1,45 @@
+@extends('americannail.layouts.index')
+@php
+    $carts = Cart::content();
+    $variable_group = App\Model\Variable::where('status', 0)->where('parent', 0)->orderBy('stt','asc')->pluck('name', 'id');
+
+    $states = \App\Model\State::get();
+
+    if(Auth::check())
+        extract(auth()->user()->toArray());
+
+@endphp
+@section('content')
+	<div id="page-content" class="page-template page-checkout">
+        <!--Page Title-->
+        <div class="page section-header text-center">
+            <div class="page-title">
+                <div class="wrapper">
+                    <h1 class="page-width">Checkout Confirm</h1>
+                </div>
+            </div>
+        </div>
+        <!--End Page Title-->
+
+        <form action="{{ route('cart.checkout.charge') }}" method="post" id="form-checkout">
+        	@csrf()
+
+        	<input type="hidden" name="shipping_cost" value="0">
+            <input type="hidden" name="cart_total" value="{{ Cart::total(2) }}" data-origin="{{ Cart::total(2) }}">
+            <input type="hidden" name="res_token" id="res_token" value="">
+        </form>
+    </div>
+@endsection
+
+@push('head-style')
+	<link rel="stylesheet" href="{{ url($templateFile .'/css/cart.css') }}">
+	<style>
+	    .msg-error{
+	        color: #f00;
+	    }
+	</style>
+@endpush
+@push('after-footer')
+	<script type="application/javascript" src = "https://checkout.stripe.com/checkout.js" > </script> 
+	<script src="{{ asset($templateFile .'/js/cart.js?ver='. time()) }}"></script>
+@endpush
